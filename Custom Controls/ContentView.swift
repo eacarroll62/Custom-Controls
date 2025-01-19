@@ -8,29 +8,37 @@
 import SwiftUI
 
 struct ContentView: View {
-//    @State var selection: Int = 2
-//    let items: [String] = ["M", "T", "W", "T", "F"]
-//
-//    var body: some View {
-//        VStack {
-//            SegmentedPicker(items: items, selection: $selection)
-//        }
-//        .padding()
-//    }
-    let colors: [Color] = [.red, .orange, .yellow, .green, .blue]
-    
     var body: some View {
-        List {
-            Spacer()
-            HStack {
-                Spacer()
-                ForEach(colors, id: \.self) { color in
-                    ColorPencilView(color: color)
-                }.padding(-29)
-                .offset(x: -30,y: 0)
+        TabView {
+            Tab("Seg", systemImage: "switch.2") {
+                @State var selection: Int = 2
+                let items: [String] = ["M", "T", "W", "T", "F"]
+                VStack {
+                    SegmentedPicker(items: items, selection: $selection)
+                }
+                .padding()
             }
-        }.onTapGesture {
             
+            Tab("Penci", systemImage: "pencil") {
+                let colors: [Color] = [.red, .orange, .yellow, .green, .blue]
+                List {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        ForEach(colors, id: \.self) { color in
+                            ColorPencilView(color: color)
+                        }.padding(-29)
+                            .offset(x: -30,y: 0)
+                    }
+                }.onTapGesture {
+                    
+                }
+            }
+            
+            Tab("Rating", systemImage: "star") {
+                @State var currentRating = 2
+                RatingsView(maxRating: 5, currentRating: $currentRating, width: 40)
+            }
         }
     }
 }

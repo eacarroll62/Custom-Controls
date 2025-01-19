@@ -46,10 +46,11 @@ extension Color {
 struct User: Codable {
     let name: String
     let email: String
-    let profilePicture: Image
+    let profilePicture: Photo
     let location: Coordinate
 }
-struct Image: Codable{
+
+struct Photo: Codable{
     let imageData: Data?
     
     init(withImage image: UIImage) {
@@ -65,6 +66,7 @@ struct Image: Codable{
         return image
     }
 }
+
 struct Coordinate: Codable {
     let latitude: Double
     let longitude: Double
