@@ -36,15 +36,27 @@ struct ContentView: View {
             }
             
             Tab("Rating", systemImage: "star") {
-                @State var currentRating = 2
-                RatingsView(maxRating: 5, currentRating: $currentRating, width: 40)
+                @State var currentRating = 0
+                @State var heartRating = 0
+                
+                RatingsView(
+                    maxRating: 5,
+                    currentRating: $currentRating,
+                    width: 40
+                )
+                
+                RatingsView(
+                    maxRating: 5,
+                    currentRating: $heartRating,
+                    width: 40,
+                    symbol: "heart",
+                    color: .red
+                )
             }
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }
