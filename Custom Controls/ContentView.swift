@@ -38,19 +38,35 @@ struct ContentView: View {
             Tab("Rating", systemImage: "star") {
                 @State var currentRating = 0
                 @State var heartRating = 0
+                @State var pinRating = 0
+                @State var bookMarkRating = 0
+                @State var flagRating = 0
                 
                 RatingsView(
                     maxRating: 5,
                     currentRating: $currentRating,
                     width: 40
                 )
-                
+                RatingsView(
+                    maxRating: 3,
+                    currentRating: $heartRating,
+                    width: 50,
+                    symbolEnum: .heart,
+                    color: .red
+                )
                 RatingsView(
                     maxRating: 5,
-                    currentRating: $heartRating,
+                    currentRating: $pinRating,
                     width: 40,
-                    symbol: "heart",
-                    color: .red
+                    symbol: "pin",
+                    color: .green
+                )
+                RatingsView(
+                    maxRating: 7,
+                    currentRating: $flagRating,
+                    width: 30,
+                    symbolEnum: .flag,
+                    color: .green
                 )
             }
         }
