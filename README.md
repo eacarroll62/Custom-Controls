@@ -1,1 +1,4 @@
-Development for new controls in Custom Controls
+Custon controls including:
+Pencils
+Segmented Picker
+Ratings View
